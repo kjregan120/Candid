@@ -420,8 +420,8 @@
   "use strict";
 
   // ====== Fill these in before deploying ======
-  const WORKER_URL = "https://little-boat-090f.kjregan120.workers.dev/";
-  const SHARED_TOKEN = "Kristin143";
+  const WORKER_URL = "https://your-worker-subdomain.workers.dev";
+  const SHARED_TOKEN = "replace-with-the-same-token-you-set-in-the-worker";
   // ==============================================
 
   pdfjsLib.GlobalWorkerOptions.workerSrc =
@@ -560,7 +560,8 @@
     const len = gaugeArc.getTotalLength();
     gaugeArc.style.strokeDasharray = len;
     gaugeArc.style.strokeDashoffset = String(len * (1 - score / 100));
-    gaugeArc.className = "gauge-fg " + scoreClass(score);
+    gaugeArc.classList.remove("low", "mid", "high");
+    gaugeArc.classList.add(scoreClass(score));
     gaugeScoreLabel.innerHTML = score + "<small>/100</small>";
   }
 
